@@ -1,3 +1,8 @@
+package core;
+
+import models.*;
+import transactions.*;
+import utils.*;
 
 import java.awt.*;
 import java.nio.file.Files;
@@ -23,7 +28,7 @@ public class BankManagement {
 
 class mainPage extends JFrame implements ActionListener {
     public static final int WIDTH = 600;
-    public static final int HEIGHT = 400;
+    public static final int HEIGHT = 600;
 
     public mainPage() {
         setTitle("Welcome!");
@@ -52,11 +57,11 @@ class mainPage extends JFrame implements ActionListener {
 
         add(customerButton);
         add(managerButton);
-        ImageIcon logoIcon = new ImageIcon("C:\\Users\\PC\\Downloads\\banking.jpg");
+        ImageIcon logoIcon = new ImageIcon("images/image.png");
         setIconImage(logoIcon.getImage());
 
         JLabel backgroundLabel = new JLabel(logoIcon);
-        backgroundLabel.setBounds(165, 0, getWidth(), getHeight());
+        backgroundLabel.setBounds(175, 40, logoIcon.getIconWidth(), logoIcon.getIconHeight());
         add(backgroundLabel);
     }
 
@@ -76,7 +81,7 @@ class LoginPage extends JFrame implements ActionListener {
 
     Scanner input = new Scanner(System.in);
     public static final int WIDTH = 600;
-    public static final int HEIGHT = 400;
+    public static final int HEIGHT = 600;
     private JTextField usernameField;
     private JPasswordField PasswordField;
     private JLabel messageLabel;
@@ -96,11 +101,6 @@ class LoginPage extends JFrame implements ActionListener {
         PasswordField.setBackground(Color.WHITE);
         add(usernameField);
         add(PasswordField);
-
-        ImageIcon logoIcon = new ImageIcon("C:\\Users\\PC\\Downloads\\login.png");
-        JLabel logoLabel = new JLabel(logoIcon);
-        logoLabel.setBounds(20, 10, logoIcon.getIconWidth(), logoIcon.getIconHeight());
-        add(logoLabel);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.BLACK);
@@ -198,8 +198,8 @@ class LoginPage extends JFrame implements ActionListener {
 
 class Signup extends JFrame implements ActionListener {
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
     private JTextField nameField;
     private JTextField phoneField;
     private JTextField cityField;
@@ -321,8 +321,8 @@ class Signup extends JFrame implements ActionListener {
 class MainMenu extends JFrame implements ActionListener {
     private Account currentAccount;
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 500;
-    public static final int HEIGHT = 1500;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     public MainMenu() {
         setTitle("Dashboard");
@@ -342,56 +342,64 @@ class MainMenu extends JFrame implements ActionListener {
         JButton myAccount = new JButton("My Account");
         myAccount.setBounds(125, 75, 250, 25);
         myAccount.addActionListener(this);
-        ImageIcon logoIcon = new ImageIcon("C:\\Users\\PC\\Downloads\\account.png");
+        ImageIcon logoIcon = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(30, 65, logoIcon.getIconWidth(), logoIcon.getIconHeight());
         add(logoLabel);
         JButton withdrawButton = new JButton("Withdraw");
         withdrawButton.setBounds(125, 150, 250, 25);
         withdrawButton.addActionListener(this);
-        ImageIcon logoIcon1 = new ImageIcon("C:\\Users\\PC\\Downloads\\withdraw.png");
+        ImageIcon logoIcon1 = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel1 = new JLabel(logoIcon1);
         logoLabel1.setBounds(30, 140, logoIcon1.getIconWidth(), logoIcon1.getIconHeight());
         add(logoLabel1);
         JButton depositButton = new JButton("Deposit");
         depositButton.setBounds(125, 225, 250, 25);
         depositButton.addActionListener(this);
-        ImageIcon logoIcon2 = new ImageIcon("C:\\Users\\PC\\Downloads\\deposit.png");
+        ImageIcon logoIcon2 = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel2 = new JLabel(logoIcon2);
         logoLabel2.setBounds(30, 215, logoIcon2.getIconWidth(), logoIcon2.getIconHeight());
         add(logoLabel2);
         JButton transferButton = new JButton("Transfer");
         transferButton.setBounds(125, 300, 250, 25);
         transferButton.addActionListener(this);
-        ImageIcon logoIcon3 = new ImageIcon("C:\\Users\\PC\\Downloads\\transfer.png");
+        ImageIcon logoIcon3 = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel3 = new JLabel(logoIcon3);
         logoLabel3.setBounds(30, 290, logoIcon3.getIconWidth(), logoIcon3.getIconHeight());
         add(logoLabel3);
         JButton transactionButton = new JButton("Transaction History");
         transactionButton.setBounds(125, 375, 250, 25);
         transactionButton.addActionListener(this);
-        ImageIcon logoIcon4 = new ImageIcon("C:\\Users\\PC\\Downloads\\history.png");
+        ImageIcon logoIcon4 = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel4 = new JLabel(logoIcon4);
         logoLabel4.setBounds(30, 365, logoIcon4.getIconWidth(), logoIcon4.getIconHeight());
         add(logoLabel4);
         JButton loanButton = new JButton("Loan");
         loanButton.setBounds(125, 450, 250, 25);
         loanButton.addActionListener(this);
-        ImageIcon logoIcon5 = new ImageIcon("C:\\Users\\PC\\Downloads\\loan1.png");
+        ImageIcon logoIcon5 = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel5 = new JLabel(logoIcon5);
         logoLabel5.setBounds(30, 440, logoIcon5.getIconWidth(), logoIcon5.getIconHeight());
         add(logoLabel5);
         JButton creditCard = new JButton("Credit Card");
         creditCard.setBounds(125, 525, 250, 25);
         creditCard.addActionListener(this);
-        ImageIcon logoIcon6 = new ImageIcon("C:\\Users\\PC\\Downloads\\credit.png");
+        ImageIcon logoIcon6 = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel6 = new JLabel(logoIcon6);
         logoLabel6.setBounds(30, 515, logoIcon6.getIconWidth(), logoIcon6.getIconHeight());
         add(logoLabel6);
         JButton signOut = new JButton("Sign Out");
         signOut.setBounds(125, 600, 250, 25);
         signOut.addActionListener(this);
-        ImageIcon logoIcon7 = new ImageIcon("C:\\Users\\PC\\Downloads\\signOut.png");
+        ImageIcon logoIcon7 = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
         JLabel logoLabel7 = new JLabel(logoIcon7);
         logoLabel7.setBounds(30, 590, logoIcon7.getIconWidth(), logoIcon7.getIconHeight());
         add(logoLabel7);
@@ -441,8 +449,8 @@ class MainMenu extends JFrame implements ActionListener {
 
 class SignupManager extends JFrame implements ActionListener {
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
     private JTextField nameField;
     private JTextField phoneField;
     private JTextField cityField;
@@ -565,7 +573,7 @@ class LoginPageManager extends JFrame implements ActionListener {
 
     Scanner input = new Scanner(System.in);
     public static final int WIDTH = 600;
-    public static final int HEIGHT = 400;
+    public static final int HEIGHT = 600;
     private JTextField usernameField;
     private JPasswordField PasswordField;
     private JLabel messageLabel;
@@ -585,11 +593,6 @@ class LoginPageManager extends JFrame implements ActionListener {
         PasswordField.setBackground(Color.WHITE);
         add(usernameField);
         add(PasswordField);
-
-        ImageIcon logoIcon = new ImageIcon("C:\\Users\\PC\\Downloads\\login.png");
-        JLabel logoLabel = new JLabel(logoIcon);
-        logoLabel.setBounds(20, 10, logoIcon.getIconWidth(), logoIcon.getIconHeight());
-        add(logoLabel);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.BLACK);
@@ -673,7 +676,6 @@ class LoginPageManager extends JFrame implements ActionListener {
             }
 
             if (!loginSuccessful) {
-                // Show error message and clear fields
                 JOptionPane.showMessageDialog(this, "Login Failed!", "Error", JOptionPane.ERROR_MESSAGE);
                 usernameField.setText("");
                 PasswordField.setText("");
@@ -687,8 +689,8 @@ class LoginPageManager extends JFrame implements ActionListener {
 
 class managerMainPage extends JFrame implements ActionListener {
     private Manager currentManager;
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
     private JLabel messageLabel;
 
     public managerMainPage(Manager currentManager) {
@@ -741,7 +743,7 @@ class DeleteAccountPage extends JFrame implements ActionListener {
         this.currentManger = currentManger;
         setTitle("Delete Account");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 400);
+        setSize(600, 600);
         setLayout(null);
 
         JLabel titleLabel = new JLabel("Delete Account");
@@ -853,9 +855,9 @@ class approveLoanPage extends JFrame implements ActionListener {
                 for (loan loan1 : loans) {
                     if (!loan1.isApprove()) {
                         Account account = loan1.getAccount();
-                        transactionHistory.append("Account Number: ").append(account.getAccountNo()).append("\n");
-                        transactionHistory.append("Customer Name: ").append(account.getName()).append("\n");
-                        transactionHistory.append("\n");
+                        transactionHistory.append("Account Number: ").append(account.getAccountNo()).append("\\n");
+                        transactionHistory.append("Customer Name: ").append(account.getName()).append("\\n");
+                        transactionHistory.append("\\n");
                     }
                 }
 
@@ -930,8 +932,8 @@ class myAccount extends JFrame implements ActionListener {
     private Account currentAccount;
 
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     public myAccount(Account currentAccount) {
         this.currentAccount = currentAccount;
@@ -1000,8 +1002,8 @@ class withdrawPage extends JFrame implements ActionListener {
     private Account currentAccount;
 
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     private JTextField amountField;
     private JLabel transactionLabel;
@@ -1071,8 +1073,8 @@ class depositPage extends JFrame implements ActionListener {
     private Account currentAccount;
 
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     private JTextField amountField;
     private JLabel transactionLabel;
@@ -1139,8 +1141,8 @@ class transferPage extends JFrame implements ActionListener {
     private Account currentAccount;
 
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     private JTextField amountField;
     private JTextField accountField;
@@ -1283,7 +1285,7 @@ class transactionHistoryPage extends JFrame implements ActionListener {
         StringBuilder transactionHistory = new StringBuilder();
         ArrayList<Transaction> accountTransactions = currentAccount.getTransaction();
         for (Transaction transaction : accountTransactions) {
-            transactionHistory.append(transaction.transaction_history()).append("\n");
+            transactionHistory.append(transaction.transaction_history()).append("\\n");
         }
         transactions.setText(transactionHistory.toString());
         add(transactions);
@@ -1434,8 +1436,8 @@ class getLoanPage extends JFrame implements ActionListener {
 
 class LoanPage extends JFrame implements ActionListener {
     private Account currentAccount;
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     public LoanPage(Account currentAccount) {
         this.currentAccount = currentAccount;
@@ -1459,7 +1461,8 @@ class LoanPage extends JFrame implements ActionListener {
         add(payButton);
         add(backButton);
 
-        ImageIcon logoIcon = new ImageIcon("C:\\Users\\PC\\Downloads\\loan.png");
+        ImageIcon logoIcon = new ImageIcon(
+                new ImageIcon("images/image.png").getImage().getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(100, 10, logoIcon.getIconWidth(), logoIcon.getIconHeight());
         add(logoLabel);
@@ -1532,8 +1535,8 @@ class payLoanPage extends JFrame implements ActionListener {
     private Account currentAccount;
 
     Scanner input = new Scanner(System.in);
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
 
     private JTextField amountField;
     private JLabel transactionLabel;
@@ -1636,8 +1639,8 @@ class payLoanPage extends JFrame implements ActionListener {
 
 class creditCardPage extends JFrame implements ActionListener {
     private Account currentAccount;
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 400;
+    public static final int WIDTH = 600;
+    public static final int HEIGHT = 600;
     private JLabel messageLabel;
 
     public creditCardPage(Account currentAccount) {
